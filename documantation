@@ -1,0 +1,41 @@
+# 🎓 GlobalPath University – Admissions Assistant  
+### Project Documentation
+
+---
+
+## 📌 Project Overview
+
+GlobalPath University Admissions Assistant is a frontend-based web application designed to guide prospective students through the admission process.  
+
+The system provides automated support features such as program matching, scholarship eligibility checking, application tracking simulation, and a rule-based chatbot.
+
+This project demonstrates how digital automation can improve student experience and reduce administrative workload.
+
+---
+
+## 🎯 Objectives
+
+- Provide 24/7 automated admission guidance
+- Help students select suitable programs
+- Check scholarship eligibility instantly
+- Simulate application tracking
+- Reduce repetitive queries handled by counselors
+- Improve enrollment engagement
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|------------|----------|
+| HTML5 | Website structure |
+| CSS3 | Styling and layout |
+| JavaScript | Interactive logic and automation |
+| Web Browser | Execution platform |
+
+⚠️ No backend or database is used in this version.
+
+---
+
+## 🏗️ System Architecture
+
