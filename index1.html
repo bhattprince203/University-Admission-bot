@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GlobalPath University Admissions Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #002b5c;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        .hero {
+            background: linear-gradient(to right, #004aad, #007bff);
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        section {
+            padding: 30px;
+            background: white;
+            margin: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #003366;
+        }
+
+        button {
+            padding: 8px 15px;
+            background: #003366;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input, select, textarea {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+        }
+
+        .chatbox {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #fafafa;
+        }
+
+        #chatlogs {
+            height: 150px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 5px;
+            background: white;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background: #002b5c;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>GlobalPath University</h1>
+    <nav>
+        <a href="#programs">Programs</a>
+        <a href="#tracker">Tracker</a>
+        <a href="#scholarships">Scholarships</a>
+        <a href="#chatbot">Chatbot</a>
+        <a href="#survey">Survey</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Your Future Starts Here</h2>
+    <p>AI-Powered Admissions Guidance 24/7</p>
+</section>
+
+<!-- PROGRAM MATCHING -->
+<section id="programs">
+    <h2>Program Matching</h2>
+    <select id="interest">
+        <option value="engineering">Engineering</option>
+        <option value="business">Business</option>
+        <option value="medical">Medical</option>
+        <option value="arts">Arts</option>
+    </select>
+    <button onclick="matchProgram()">Find Program</button>
+    <p id="programResult"></p>
+</section>
+
+<!-- APPLICATION TRACKER -->
+<section id="tracker">
+    <h2>Application Tracker</h2>
+    <input type="text" id="studentName" placeholder="Enter Your Name">
+    <select id="status">
+        <option>Submitted</option>
+        <option>Under Review</option>
+        <option>Accepted</option>
+        <option>Rejected</option>
+    </select>
+    <button onclick="trackApplication()">Check Status</button>
+    <p id="statusResult"></p>
+</section>
+
+<!-- SCHOLARSHIP -->
+<section id="scholarships">
+    <h2>Scholarship Matching</h2>
+    <input type="number" id="marks" placeholder="Enter Percentage">
+    <button onclick="checkScholarship()">Check Eligibility</button>
+    <p id="scholarshipResult"></p>
+</section>
+
+<!-- CHATBOT -->
+<section id="chatbot">
+    <h2>Admissions Chatbot</h2>
+    <div class="chatbox">
+        <div id="chatlogs"></div>
+        <input type="text" id="userInput" placeholder="Ask about deadline, documents, fees...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</section>
+
+<!-- SURVEY -->
+<section id="survey">
+    <h2>Student Satisfaction Survey</h2>
+    <input type="text" placeholder="Your Name">
+    <input type="number" placeholder="Rating (1-5)" min="1" max="5">
+    <textarea placeholder="Your Feedback"></textarea>
+    <button onclick="submitSurvey()">Submit</button>
+    <p id="surveyMsg"></p>
+</section>
+
+<div class="footer">
+    © 2026 GlobalPath University | 24/7 Admissions Support
+</div>
+
+<script>
+function matchProgram() {
+    var interest = document.getElementById("interest").value;
+    var result = document.getElementById("programResult");
+
+    if (interest == "engineering")
+        result.innerHTML = "Recommended: B.Tech Computer Science";
+    else if (interest == "business")
+        result.innerHTML = "Recommended: BBA International Business";
+    else if (interest == "medical")
+        result.innerHTML = "Recommended: MBBS";
+    else
+        result.innerHTML = "Recommended: BA Fine Arts";
+}
+
+function trackApplication() {
+    var name = document.getElementById("studentName").value;
+    var status = document.getElementById("status").value;
+
+    if(name == "") {
+        alert("Please enter your name");
+        return;
+    }
+
+    document.getElementById("statusResult").innerHTML =
+        "Hello " + name + ", your application status is: " + status;
+}
+
+function checkScholarship() {
+    var marks = document.getElementById("marks").value;
+
+    if (marks >= 90)
+        document.getElementById("scholarshipResult").innerHTML =
+            "Eligible for 50% Merit Scholarship";
+    else if (marks >= 75)
+        document.getElementById("scholarshipResult").innerHTML =
+            "Eligible for 25% Scholarship";
+    else
+        document.getElementById("scholarshipResult").innerHTML =
+            "No scholarship eligibility";
+}
+
+function sendMessage() {
+    var input = document.getElementById("userInput").value;
+    var chatlogs = document.getElementById("chatlogs");
+
+    if(input == "") return;
+
+    chatlogs.innerHTML += "<p><b>You:</b> " + input + "</p>";
+
+    var reply = "Please visit admissions office.";
+
+    if(input.toLowerCase().includes("deadline"))
+        reply = "Application deadline is March 30.";
+    else if(input.toLowerCase().includes("documents"))
+        reply = "Required: Marksheet, ID Proof, Entrance Score.";
+    else if(input.toLowerCase().includes("fees"))
+        reply = "Application fee is ₹1000.";
+
+    chatlogs.innerHTML += "<p><b>Bot:</b> " + reply + "</p>";
+
+    document.getElementById("userInput").value = "";
+}
+
+function submitSurvey() {
+    document.getElementById("surveyMsg").innerHTML =
+        "Thank you! Your feedback has been submitted successfully.";
+}
+</script>
+
+</body>
+</html>
